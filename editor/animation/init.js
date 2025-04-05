@@ -75,7 +75,7 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
             const each_leg_positions = []
             last_leg_positions.fill(-1)
             output.forEach(o => {
-                const [a, b] = o.values
+                const a = Math.min(...o.values)
                 last_leg_positions[a] = Math.max(...last_leg_positions.slice(a - 1, a + 2)) + 1
                 each_leg_positions.push(last_leg_positions[a])
             })
@@ -95,7 +95,7 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
              * draw horizontal lines
              */
             output.forEach((o, i) => {
-                const [a, b] = o.values
+                const a = Math.min(...o.values)
                 paper.path(
                     [
                         'M', (a - 1) * unit + os,
