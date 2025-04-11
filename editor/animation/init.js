@@ -1,6 +1,6 @@
 requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
     function (extIO, $) {
-        function follow_ghost_legs_visualization(tgt_node, data) {
+        function draw_ghost_legs_visualization(tgt_node, data) {
             if (! data || ! data.ext) {
                 return
             }
@@ -126,7 +126,7 @@ requirejs(['ext_editor_io2', 'jquery_190', 'raphael_210'],
         }
         var io = new extIO({
             animation: function ($expl, data) {
-                follow_ghost_legs_visualization(
+                draw_ghost_legs_visualization(
                     $expl[0],
                     data,
                 );
