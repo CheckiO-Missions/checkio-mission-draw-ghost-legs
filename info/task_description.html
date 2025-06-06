@@ -34,8 +34,8 @@
 
 <pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">
 def checker(func: callable, result: list[int]):
-    your_result = [r for r in sorted(result)]
-    for a, b in func(result):
+    your_result = sorted(result)
+    for a, b in func(result[:]):
         your_result[a - 1], your_result[b - 1] = your_result[b - 1], your_result[a - 1]
     return your_result == result
 
