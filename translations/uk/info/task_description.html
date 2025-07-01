@@ -1,0 +1,56 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+<p>
+    <a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a> це відомий метод, який використовується для отримання випадкових результатів.
+    Цей механізм змінює порядок у списку.
+</p>
+<p>
+    Ця місія є майже зворотною до <a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a>.
+    Але ця місія має незліченну кількість відповідей і асиметрична за складністю.
+    Тому спочатку варто розв'язати <a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a>.
+</p>
+
+
+<p style="text-align: center;">
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_01.svg" alt="example_01" style="vertical-align:top; width:250px;"/>
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_02.svg" alt="example_02" style="vertical-align:top; width:250px;"/>
+</p>
+
+<p>
+    У якості вхідних даних Вам надається список результатів для цього <a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a>.
+    Початкові значення завжди послідовно пронумеровані, починаючи з 1. Ви повинні повернути список ніг, які їм відповідають.
+</p>
+
+<ul>
+    <li>Нога - це кортеж з двох цілих чисел, які представляють собою дві вертикальні лінії, які з'єднуються ногою.
+        (Ніжка завжди з'єднує сусідні вертикальні лінії).</li>
+    <li>Порядок ніг вказує на рівень, на якому вони розміщені (перша нога є верхньою, а остання - нижньою).</li>
+</ul>
+<p>Ваша відповідь буде підтверджена перевіркою.</p>
+
+<p>
+    <strong>Приклади:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">
+def checker(func: callable, result: list[int]):
+    your_result = sorted(result)
+    for a, b in func(result[:]):
+        your_result[a - 1], your_result[b - 1] = your_result[b - 1], your_result[a - 1]
+    return your_result == result
+
+
+assert checker(draw_ghost_legs, [3, 2, 1]) is True              # [(1, 2), (2, 3), (1, 2)] etc.
+assert checker(draw_ghost_legs, [3, 2, 4, 1]) is True           # [(2, 3), (1, 2), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [1, 5, 4, 2, 3]) is True        # [(3, 4), (4, 5), (3, 4), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [2, 3, 4, 5, 6, 1]) is True     # [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)] etc.
+</pre>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Вхідні дані:</strong> Результат гри "Примарна нога" (список цілих чисел).
+</p>
+
+<p>
+   <strong>Вихідні дані:</strong> Список ніг (список кортежів з двох цілих чисел).
+</p>
