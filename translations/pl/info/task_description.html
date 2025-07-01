@@ -1,0 +1,56 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+<p>
+    <a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a> jest dobrze znaną metodą używaną do uzyskiwania losowych wyników.
+    Mechanizm ten powoduje zmianę kolejności na liście.
+</p>
+<p>
+    Ta misja jest prawie odwrotnością <a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a>.
+    Ale ta misja ma niezliczoną liczbę odpowiedzi i asymetryczny poziom trudności.
+    Proszę więc najpierw rozwiązać <a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a>.
+</p>
+
+
+<p style="text-align: center;">
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_01.svg" alt="example_01" style="vertical-align:top; width:250px;"/>
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_02.svg" alt="example_02" style="vertical-align:top; width:250px;"/>
+</p>
+
+<p>
+    Jako wartości wejściowe otrzymują Państwo listę wyników dla tej strony <a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a>.
+    Wartość początkowa jest zawsze kolejno ponumerowana od 1. Proszę zwrócić listę nóg, które do niej pasują.
+</p>
+
+<ul>
+    <li>Noga jest krotką dwóch liczb całkowitych, które reprezentują dwie pionowe linie połączone przez nogę.
+        (Odnoga zawsze łączy sąsiednią linię pionową).</li>
+    <li>Kolejność nóg reprezentuje poziom, na którym są one umieszczone (pierwsza noga jest na górze, a ostatnia na dole).</li>
+</ul>
+<p>Państwa odpowiedź zostanie potwierdzona przez program sprawdzający.</p>
+
+<p>
+    <strong>Przykłady:</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">
+def checker(func: callable, result: list[int]):
+    your_result = sorted(result)
+    for a, b in func(result[:]):
+        your_result[a - 1], your_result[b - 1] = your_result[b - 1], your_result[a - 1]
+    return your_result == result
+
+
+assert checker(draw_ghost_legs, [3, 2, 1]) is True              # [(1, 2), (2, 3), (1, 2)] etc.
+assert checker(draw_ghost_legs, [3, 2, 4, 1]) is True           # [(2, 3), (1, 2), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [1, 5, 4, 2, 3]) is True        # [(3, 4), (4, 5), (3, 4), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [2, 3, 4, 5, 6, 1]) is True     # [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)] etc.
+</pre>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>Wejście:</strong> Wynik "Ghost Leg" (lista liczb całkowitych).
+</p>
+
+<p>
+   <strong>Wyjście:</strong> Lista nóg (lista krotek dwóch liczb całkowitych).
+</p>
