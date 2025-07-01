@@ -1,0 +1,56 @@
+<!-- Describe task in general -->
+<img src="{{MEDIA_CONVERT}}title.png" class="title_img" />
+<p>
+    <a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a> 是一种众所周知的获得随机结果的方法。
+    这种机制具有改变列表顺序的效果。
+</p>
+<p>
+    这项任务几乎与<a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a> 相反。
+    但这个任务有无数个答案，而且难度不对称。
+    因此，您应该先解决<a href="https://py.checkio.org/mission/follow-ghost-legs-2/">Follow Ghost Legs</a> 。
+</p>
+
+
+<p style="text-align: center;">
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_01.svg" alt="example_01" style="vertical-align:top; width:250px;"/>
+    <img title="example_01" src="{{MEDIA}}draw_ghost_legs_example_02.svg" alt="example_02" style="vertical-align:top; width:250px;"/>
+</p>
+
+<p>
+    输入值是<a href="https://en.wikipedia.org/wiki/Ghost_leg">Ghost leg</a> 的结果列表。
+    起始值总是从 1 开始依次编号。您必须返回与之匹配的脚列表。
+</p>
+
+<ul>
+    <li>支脚是由两个整数组成的元组，代表支脚所连接的两条垂直线。
+        (脚总是连接相邻的垂直线）。</li>
+    <li>支脚的顺序代表它们所处的层级（第一条支脚在顶层，最后一条支脚在底层）。</li>
+</ul>
+<p>您的答案将由校验器确认。</p>
+
+<p>
+    <strong>示例</strong>
+</p>
+
+<pre class="brush: {% if is_js %}javascript{% else %}python{% endif %}">
+def checker(func: callable, result: list[int]):
+    your_result = sorted(result)
+    for a, b in func(result[:]):
+        your_result[a - 1], your_result[b - 1] = your_result[b - 1], your_result[a - 1]
+    return your_result == result
+
+
+assert checker(draw_ghost_legs, [3, 2, 1]) is True              # [(1, 2), (2, 3), (1, 2)] etc.
+assert checker(draw_ghost_legs, [3, 2, 4, 1]) is True           # [(2, 3), (1, 2), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [1, 5, 4, 2, 3]) is True        # [(3, 4), (4, 5), (3, 4), (2, 3), (3, 4)] etc.
+assert checker(draw_ghost_legs, [2, 3, 4, 5, 6, 1]) is True     # [(1, 2), (2, 3), (3, 4), (4, 5), (5, 6)] etc.
+</pre>
+
+<!-- Explain input and output values -->
+<p>
+   <strong>输入：</strong>Ghost Leg "的结果（整数列表）。
+</p>
+
+<p>
+   <strong>输出：</strong>腿列表（由两个整数组成的元组列表）。
+</p>
